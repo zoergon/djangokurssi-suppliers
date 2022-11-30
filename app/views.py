@@ -67,6 +67,33 @@ def addsupplier(request):
     Supplier(companyname = a, contactname = b, address = c, phone = d, email = e, country = f).save()
     return redirect(request.META['HTTP_REFERER'])
 
+def confirmdeletesupplier(request, id):
+    supplier = Supplier.objects.get(id = id)
+    context = {'supplier': supplier}
+    return render (request,"confirmdelsupp.html",context)
+
+
+def deletesupplier(request, id):
+    Supplier.objects.get(id = id).delete()
+    return redirect(supplierlistview)
+
+def edit_supplier_get(request, id):
+        supplier = Supplier.objects.get(id = id)
+        context = {'supplier': supplier}
+        return render (request,"edit_supplier.html",context)
+
+
+def edit_supplier_post(request, id):
+        supplier = Supplier.objects.get(id = id)
+        supplier.companyname = request.POST['companyname']
+        supplier.contactname = request.POST['contactname']
+        supplier.address = request.POST['address']
+        supplier.phone = request.POST['phone']
+        supplier.email = request.POST['email']
+        supplier.country = request.POST['country']
+        supplier.save()
+        return redirect(supplierlistview)
+
 def searchsuppliers(request):
     search = request.POST['search']
     filtered = Supplier.objects.filter(companyname__icontains=search)

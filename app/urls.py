@@ -5,7 +5,7 @@ from django.urls import path
 # ja import landingview
 from .views import landingview, productlistview, supplierlistview, addsupplier, addproduct, \
     deleteproduct, confirmdeleteproduct, edit_product_get, edit_product_post, products_filtered, \
-        searchsuppliers
+        deletesupplier, confirmdeletesupplier, edit_supplier_get, edit_supplier_post, searchsuppliers
 
 # path: jos tullaan sovelluksen juureen
 # renderöidään landingview
@@ -23,5 +23,9 @@ urlpatterns = [
     # Supplier url's
     path('suppliers/', supplierlistview),
     path('add-supplier/', addsupplier),
+    path('delete-supplier/<int:id>/', deletesupplier),
+    path('confirm-delete-supplier/<int:id>/', confirmdeletesupplier),
+    path('edit-supplier-get/<int:id>/', edit_supplier_get),
+    path('edit-supplier-post/<int:id>/', edit_supplier_post),
     path('search-suppliers/', searchsuppliers),
 ]
