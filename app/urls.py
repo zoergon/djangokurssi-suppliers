@@ -3,14 +3,22 @@ from django.urls import path
 # tämän kansion sisällä = .
 # sieltä views
 # ja import landingview
-from .views import landingview, productlistview, supplierlistview, addsupplier, addproduct, \
+from .views import productlistview, supplierlistview, addsupplier, addproduct, \
     deleteproduct, confirmdeleteproduct, edit_product_get, edit_product_post, products_filtered, \
-        deletesupplier, confirmdeletesupplier, edit_supplier_get, edit_supplier_post, searchsuppliers
+        deletesupplier, confirmdeletesupplier, edit_supplier_get, edit_supplier_post, searchsuppliers, \
+            loginview, login_action, logout_action
 
 # path: jos tullaan sovelluksen juureen
 # renderöidään landingview
 urlpatterns = [
-    path('', landingview),
+    # alkuperäinen, vanha landingview
+    # path('', landingview),
+
+    # Login & logout
+    path('', loginview),
+    path('login/', login_action),
+    path('logout/', logout_action),
+
     # Products url's
     path('products/', productlistview),
     path('add-product/', addproduct),

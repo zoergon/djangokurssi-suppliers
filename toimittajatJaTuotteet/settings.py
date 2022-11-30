@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'toimittajatJaTuotteet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -81,6 +82,20 @@ DATABASES = {
     }
 }
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        "CLIENT": {
+            "name": 'SuppliersDB',
+            "host": 'mongodb+srv://zoerg:<password>@cluster0.5qkk8zh.mongodb.net/SuppliersDB?retryWrites=true&w=majority',
+            "username": 'zoerg',
+            "password": '<password>',
+            "authMechanism": "SCRAM-SHA-1",
+        },
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
