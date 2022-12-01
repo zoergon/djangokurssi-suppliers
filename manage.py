@@ -5,8 +5,16 @@ import sys
 
 
 def main():
+
+    # If WEBSITE_HOSTNAME is defined as an environment variable, then we're running
+    # on Azure App Service and should use the production settings.
+    
+    ################ huom ##############################################
+    settings_module = "toimittajatJaTuotteet.production" if 'WEBSITE_HOSTNAME' in os.environ else 'toimittajatJaTuotteet.settings'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
+
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'toimittajatJaTuotteet.settings')
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'toimittajatJaTuotteet.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
